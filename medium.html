@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/game-structure.css">
+  <link id="theme" rel="stylesheet" type="text/css" href="css/themes/translucent-grey.css">
+  <link rel="stylesheet" type="text/css" href="assets/fontawesome-web/css/all.css">
+	<title>Tic-Tac-Toe</title>
+</head>
+<body onload="loadFuncs()">
+
+
+  <div id="boardContainer">
+    <table id="board">
+      <tr align="center">
+        <td id="grid0"></td>
+        <td id="grid1"></td>
+        <td id="grid2"></td>
+      </tr>
+      <tr align="center">
+        <td id="grid3"></td>
+        <td id="grid4"></td>
+        <td id="grid5"></td>
+      </tr>
+      <tr align="center">
+        <td id="grid6"></td>
+        <td id="grid7"></td>
+        <td id="grid8"></td>
+      </tr>
+    </table>
+  </div>
+
+  <br />
+  <br />
+  <br />
+
+
+  <audio  id="game_music"  src="assets/sounds/medium_music.mp3"  loop></audio>
+  <audio  id="hit_sound"  src="assets/sounds/hit_sound.mp3" ></audio>
+
+  <button id="pauseBtn" onclick="playSound(); pauseGame()"><i class="fa fa-pause-circle" style="font-size: 20px"></i></button>
+
+  <div id="modal">
+
+    <div id="chooseMarkMenu" class="modal-item overflow">
+      <h2 style="text-align: center;">Choose your mark</h2>
+    
+      <button onclick="chooseX()" style="width: 45%;">x</button>
+      <button onclick="chooseO()" style="width: 45%">o</button>
+    <!-- /#chooseMarkMenu -->
+    </div>
+
+    <div id="pauseMenu" class="modal-item overflow">
+        
+        <button class="close-btn" onclick="playSound(); document.getElementById('modal').style.display ='none'; document.getElementById('pauseMenu').style.display = 'none'">
+          <i class="fa fa-window-close"></i>
+        </button>
+
+        <fieldset>
+          <legend>Scores</legend>
+          
+          <div>
+            
+            <table id="scores">
+              <thead>
+                  <th>X</th><th>O</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td id="x-score">0</td>
+                  <td id="o-score">0</td>
+                </tr>
+              </tbody>
+            </table>
+              <br />
+            <span>(You are <span id="whoIsPlayer" style=" font-weight: 900"></span>)</span>
+              <br />
+              <br />
+            <span >
+              Lead: 
+              <span id="playersLead">0</span>
+            </span>
+              <br />
+              <br />
+            <span>
+              Round No:
+              <span id="currRoundNo">1</span>
+            </span>       
+          </div>
+            <br />
+            <br />
+          
+          <div class="robotMessage" style="padding: 10px">
+            <i class="fas fa-robot" title="I'm Benji the robot, your opponent"></i>&nbsp;<span id="funMsgAboutWinStat" style="font-family: monospace; font-weight: bold"></span>
+          </div>
+            <br />
+            <br />
+        </fieldset>
+
+        <fieldset id="miscSettings" >
+          <legend>Misc</legend>
+          <a href="index.html"><button>Main Menu</button></a>
+          <button onclick="toggleMusicPlayState(this); play_or_pauseMusic()">
+            <span id="musicIcons" class="fa-stack ">
+              <i class="music-icon fa fa-music "></i>
+              <i class="ban-icon fa fa-stack-2x"></i>
+            </span>
+          </button>
+          <button onclick="toggleSoundPlayState(this);">
+            <span id="soundIcons" class="fa-stack ">
+              <i class="music-icon fa fa-bullhorn "></i>
+              <i class="ban-icon fa fa-stack-2x"></i>
+            </span>
+          </button>
+
+        </fieldset>
+    <!-- /#pauseMenu -->
+    </div>
+
+    <div id="playAgainMenu" class="modal-item overflow">
+        <h3 style="text-align: center">Do you want to play again?</h3>
+        <button onclick="determineWhetherToPlayAgain(true)">Yes</button>
+        <button onclick="determineWhetherToPlayAgain(false)">No</button>
+    <!--/#playAgainMenu  -->
+    </div>
+
+  <!-- /#modal -->
+  </div>
+
+	<h5>Made by Praise Dare. Copyright 2020</h5>
+
+  <script src="scripts/settings.js"></script>
+	<script src="scripts/medium_mode.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+button{
+  background: #cfcfcf;
+  color: black;
+  border-color:#dfdfdf;
+}
+
+button:hover{
+}
+
+#board tr::after{
+  background-color: rgba(255,255,255,0.35) !important;
+}
+
+#board, .modal-item{
+  border: 1px solid rgba(255,255,255,0.45);
+  background: linear-gradient(135deg, transparent 40%, rgba(205,205,205,1) 50%, transparent 80%);
+  box-shadow: 0 0px 10px rgba(255,255,255,0.35);
+  color: white;
+  text-shadow: 1px 1px black;
+}
+
+#board{
+	border: none;
+}
+
+#board td{
+  border-color: rgba(255,255,255,0.35);
+}
+
+#board tr{
+  border-color: rgba(255,255,255,0.35);
+}
+
+.modal-item{
+  border: 1px solid gba(255,255,255,0.7);
+}
+
+.modal-item fieldset{
+  border-color: white;
+}

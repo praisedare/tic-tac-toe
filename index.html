@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content=" #dfdfdf">
+  <link rel="stylesheet" type="text/css" href="css/home-page.css">
+  <link rel="stylesheet" id="theme" type="text/css" href="css/themes/translucent-grey.css">
+  <link rel="stylesheet" type="text/css" href="assets/fontawesome-web/css/all.css">
+	<title>Tic-Tac-Toe</title>
+</head>
+<body  onload="loadFuncs()">
+
+  <audio  id="game_music"  src="assets/sounds/funky.mp3"  loop></audio>
+  <audio  id="hit_sound"  src="assets/sounds/hit_sound.mp3"></audio>
+
+
+  <div class="main-panel">
+    <h2 style="text-align: center;">Choose a Difficulty To Begin</h2>
+    <br>
+    <a href="easy.html"><button onclick="playSound()" style="width: 100%;" id="easy_diff">Easy<i class="fas fa-baby" title="Baby"></i></button></a>
+    <a href="medium.html">
+      <button onclick="playSound()" style="width: 100%;" id="medium_diff">Medium<i style="float: right" class="far fa-meh" ></i></button>
+    </a>
+    <a href="hard.html">
+      <button onclick="playSound()" style="width: 100%" id="hard_diff" title="You sure you can handle this one? (~_^)">Hard<i style="float: right" class="far fa-grimace" title="Eish..."></i></button>
+    </a>
+
+    <h3 style="text-align: center">Other Stuff</h3>
+    <a href="javascript:void(0)">
+      <button onclick="playSound(); showHelp()" style="width: 100%;">Help<i class="fa fa-question"></i></button>
+    </a>
+    <a href="javascript:void(0)" class="settings" onclick="playSound(); showSettings()" title="Customize the game to your taste">
+      <button >Settings<i class="fa fa-cog"></i></button>
+    </a>
+  </div>
+
+  <div id="modal">
+    <button class="close-btn" onclick="playSound(); closeAllModalItems()">
+      &times;
+    </button>
+
+    <div id="soundPermission" class="modal-item">
+      <h3>Please grant us permission to play sounds</h3>
+      <button onclick="modal.style.display = 'none'; this.parentNode.style.display = 'none'">OK</button>
+    </div>
+
+    <div id="helpMenu">
+      <h3>Scoring &amp; Round System</h3>
+      <p>Each level consists of five rounds.<br>
+         The winner of each round is awarded 2 points. <br>
+         If the round ends in a draw, both players are awarded 1 point. <br>
+         (You can check the scores at the Pause Menu)
+      </p>
+      <p></p>
+
+      <h3>Difficulty Levels</h3>
+      <ul>
+        <li>Easy</li>
+        <div class="accordion-content">
+          <p>In easy mode, you get the first move. Computer plays like a dummy.<br> I've never seen any idiot who lost in this difficulty. </p>
+        </div>
+        
+        <li>Medium</li>
+        <div class="accordion-content">
+          <p>Computer gets the first move, is a bit wiser, blocks your moves, and plays with some sense.</p>
+        </div>
+        
+        <li>Hard</li>
+        <p>Computer also gets first move and goes all out. Good luck trying to win here</p>
+
+      </ul>
+
+    <!-- /#helpMenu -->
+    </div> 
+ 
+
+
+    <div id="settingsMenu" class="modal-item overflow">
+
+        <div class="themes">
+          <fieldset id="selectTheme">
+            <legend>Theme</legend>
+          </fieldset>
+          <div class="scrollable-div">
+            <div class="no-wrap">
+              <div title="Bubble gum" style="background: linear-gradient(75deg, #ccf2ff 0%, #fcf 100%)" class="image-holder inline-block" onclick='setTheme("bubble-gum.css")'>
+              </div>
+              <div title="Translucent grey" style="background: rgba(240,240,240,0.7)" class="image-holder inline-block" onclick='setTheme("translucent-grey.css")'>
+              </div>
+              <div title="Glass" style="background: linear-gradient(75deg, transparentt 0%, rgba(205,205,205,0.5) 100%)" class="image-holder inline-block" onclick='setTheme("glass.css")'>
+              </div>
+              
+              <!-- Content goes here -->
+            </div>
+          </div>
+        <!-- /.themes -->
+        </div>
+
+        <div class="backgrounds">
+          
+          <fieldset id="selectBackground">
+            <legend>Backgrounds</legend>
+          </fieldset>
+          
+          <div class="scrollable-div">
+            <div class="no-wrap" align="center">
+              <!-- images -->
+              <div class="image-holder inline-block" onclick='setBackground("virtual-city.jpg", "picture")'>
+                <img src="assets/images/virtual-city.jpg">
+              </div>
+              <div class="image-holder inline-block" onclick='setBackground("fantasy-ghoul.jpg", "picture")'>
+                <img src="assets/images/fantasy-ghoul.jpg">
+              </div>
+              <div class="image-holder inline-block" onclick='setBackground("canvas-1.jpg", "picture")'>
+                <img src="assets/images/canvas-1.jpg">
+              </div>
+              <div class="image-holder inline-block" onclick='setBackground("butterfly.jpg", "picture")'>
+                <img src="assets/images/butterfly.jpg">
+              </div>
+              <div class="image-holder inline-block" onclick='setBackground("fur.jpg", "picture")'>
+                <img src="assets/images/fur.jpg">
+              </div>
+              <div class="image-holder inline-block" style="background: #ccf" onclick='setBackground(this.style.backgroundColor, "color")'>
+              </div>
+              <div class="image-holder inline-block" style="background: black" onclick='setBackground(this.style.backgroundColor, "color")'>
+              </div>
+              <div class="image-holder inline-block" style="background: radial-gradient( white  -100%, lightblue 110%)" onclick='setBackground(this.style.backgroundImage, "color")'></div>
+              <div class="image-holder inline-block" style="background: linear-gradient(130deg, #99f -20%,#f9f 100%)" onclick='setBackground(this.style.backgroundImage, "color")'></div>            
+            <!-- /.no-wrap -->
+            </div>
+          <!-- /.scrollable-div -->
+          </div>        
+        <!-- /.backgrounds-->
+        </div>
+
+
+        <div class="sounds">
+          <fieldset id="selectSounds">
+            <legend>Sounds</legend>
+          </fieldset>
+          <div align="center">
+            <button onclick="toggleMusicPlayState(this); play_or_pauseMusic()">
+              <span id="musicIcons" class="fa-stack fa-lg">
+                <i class="music-icon fa fa-music "></i>
+                <i class="ban-icon fa fa-stack-2x"></i>
+              </span>
+            </button>
+            <button onclick="toggleSoundPlayState(this)">
+              <span id="soundIcons" class="fa-stack fa-lg">
+                <i class="music-icon fa fa-bullhorn "></i>
+                <i class="ban-icon fa fa-stack-2x"></i>
+              </span>
+            </button>
+          </div>
+        <!-- /.sounds -->
+        </div>
+
+    <!-- /#settingsMenu -->
+    </div>
+
+  </div>
+
+
+
+	<h5 class="credit">Made by Praise Dare. Copyright 2020</h5>
+
+  <script>
+
+    document.onclick = function(){
+      playMusic();
+    }
+
+    function closeAllModalItems(){
+      modal.style.display = 'none';
+      helpMenu.style.display = 'none';
+      settingsMenu.style.display = 'none';
+    }
+
+    function showSettings(){
+      modal.style.display = 'block';
+      settingsMenu.style.display = 'block';
+    }
+
+    function hideSettings(){
+      settingsMenu.style.display = 'none';
+      modal.style.display = 'none';
+    }
+
+    function showHelp(){
+      modal.style.display = "block";
+      helpMenu.style.display = "block";
+    }
+
+    function hideSettings(){
+      settingsMenu.style.display = 'none';
+      modal.style.display = 'none';
+    }
+
+    function loadFuncs(){ 
+      adjustSoundIcons()   
+    }
+
+    function play_or_pauseMusic(){
+      if (game_music.paused) {
+        game_music.play()
+      } else {
+        game_music.pause()
+      }
+    }
+
+    function playMusic(){
+      
+      if (localStorage.playMusic == "false") {
+        //do nothing
+      } else {
+        game_music.play();
+      }
+    }
+
+    function playSound(){
+      if (localStorage.playSound == "false") {
+        //do nothing
+      } else {
+        hit_sound.play();
+      }
+    }
+
+  </script>
+  <script src="scripts/settings.js"></script>
+
+</body>
+</html>

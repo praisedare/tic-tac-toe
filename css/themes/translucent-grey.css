@@ -1,0 +1,42 @@
+
+button{
+	background: #cfcfcf;
+	border-color: lightgrey;
+	color: black;
+}
+
+button:hover{
+  border-color: black;
+}
+
+#chooseMarkMenu button, #playAgainMenu button, #pauseBtn{
+	text-shadow: none;
+}
+
+#board{
+	text-shadow: 1px 1px 1px black;
+}
+
+#board td{
+	border-color: rgba(0,0,0,0.5);
+}
+
+#board tr{
+	border-color: rgba(0,0,0,0.5);
+}
+
+#board, .modal-item{
+	background:  rgba(240,240,240,0.7);
+}
+
+#settingsMenu legend{
+  color: white;
+  text-shadow: 1px 1px 1px black;
+}
+
+.modal-item{
+  color: white;
+  border: 1px solid black;
+}
+
+

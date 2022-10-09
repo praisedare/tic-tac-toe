@@ -1,0 +1,232 @@
+*{
+  box-sizing: border-box;
+}
+
+body{
+	background: url(../assets/images/canvas-1.jpg);
+  font-family: serif;
+}
+
+h1,h2,h3,h4,h5,h6{
+  font-family: monospace;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+button:focus{
+  outline: none;
+}
+
+fieldset{
+  border-width: 0;
+  border-top: 1px solid black;
+}
+
+legend{
+  margin: 0px auto;
+  font-family: Courier, monospace;
+  font-weight: bold;
+}
+
+#modal{
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  display: block; /*Modal has to be visible for #soundPermission to also be visible*/
+  position: fixed;
+  background: rgba(0,0,0,0.7);
+}
+
+#modal>div:not(#soundPermission){
+  display: none;
+}
+
+
+#helpMenu, #settingsMenu, #soundPermission{
+  top: 50%;
+  left: 50%;
+  width:95%;
+  height: 80%;
+  max-width: 648px;
+  border-radius: 5px;
+  position: absolute;
+  animation: popOut 0.75s;
+  transform: translate(-50%, -50%); 
+}
+
+#helpMenu{
+  padding: 10px;
+  border-radius: 0px;
+  background: black;
+  border: 1px solid white;
+  color: white;
+  font-family: Courier, monospace;
+  overflow-y: scroll;
+}
+
+#soundPermission{
+  max-height: 260px;
+  display: block;
+  text-align: center;
+}
+
+#soundPermission button{
+  padding: 10px 12px;
+  border: 1px solid black;
+}
+
+.close-btn{
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  font-weight: bolder;
+  border: 1px solid white;
+  background: tomato;
+  color: white;
+}
+
+.close-btn:hover{
+  border-color: tomato;
+}
+
+.image-holder{
+  width: 120px;
+  height: 120px;
+  border-radius: 7px;
+  margin: 0 10px;
+  transition: 0.3s;
+  border: 2px solid white;
+}
+
+.image-holder:hover{
+  box-shadow: 0 3px 5px black
+}
+
+.image-holder img{
+  width: 100%;
+  height: 100%;
+  border-radius: 7px;
+}
+
+.inline{
+  display: inline;
+}
+
+.inline-block{
+  display: inline-block;
+}
+
+.main-panel{
+	width: 98%;
+  max-width: 650px;
+  margin: 10px auto;
+  background:  rgba(240,240,240,0.7);
+  box-shadow: inset 0 2px transparent;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.main-panel button, #settingsMenu button{
+  border: 1px solid black;
+  /*background: black;*/
+  /*color: white;*/
+  padding: 10px 15px;
+}
+
+.main-panel>a{
+  width: 95%;
+  display: block;
+  max-width: 300px;
+  margin: 15px auto;
+  text-decoration: none;
+}
+
+.main-panel>a:hover{
+  cursor: default;
+}
+
+.modal-item{
+  display: none;
+  max-height: 600px;
+}
+
+.no-wrap{
+  white-space: nowrap;
+}
+
+.overflow{
+  overflow: auto;
+}
+
+.overflow-x{
+  overflow-x: auto;
+}
+
+.overflow-y{
+  overflow-y: auto;
+}
+
+.scrollable-div{
+  width: 100%;
+  overflow-x: scroll;
+  padding: 10px;
+}
+
+.sounds button{
+  width: 43%;
+}
+
+a.settings:hover i{
+  animation: spin 0.5s ;
+}
+
+a button{
+  width: 100%;
+  font-size: 25px;
+  overflow: hidden;
+  position: relative;
+}
+
+a button i{
+  float: right;
+  position: relative;
+  top: 80px;
+  transition: 0.35s;
+
+}
+
+a button:hover i{
+  top: 3px;
+}
+
+@keyframes spin{
+  from{
+    transform: rotate(0deg);
+  }
+
+  to{
+    transform: rotate(360deg)
+  }
+}
+
+@keyframes popOut{
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 600px){
+
+  a button{
+    font-size: 15px;
+  }
+}
